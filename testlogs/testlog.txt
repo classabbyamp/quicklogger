@@ -1,0 +1,32 @@
+# this is a comment
+mycall w2sz
+mygrid fn32er
+operators w2aau k2dej
+qslmsg please qsl via buro
+mywwff kff-0156
+mysota w7a/ap-001
+mypota k-2233
+nickname rpi
+
+{ this is also a comment }
+
+date 16-10-30
+80m am
+2335 5 4 ra3ax
+dj2mx [direct]
+40 dk4rm 29 6 <good sig>
+2 oh7ms 44 5
+4 w4aql 6
+50 ku1t 15m jt65 +17 -12
+3.525 lsb ra3axx ,fn32 .fn20
+20m 14.2 w4aql @buzz #em87
+
+day ++ 30m
+op kn8u
+cw
+1856 ku1t 7 ,337 8 .781
+
+ops kn8u w2tke
+date 2016-04-10 40m ssb 335 m0yza wwff gff-0002
+1716 dl/on6zq/p dl/al-093
+8 k0pon k-2233

@@ -1,0 +1,145 @@
+# Header 
+mycall n7b
+
+
+# Log 
+date 2019-06-01
+operator k0pon
+0022 w7om 20m 14.270 ssb <Dave from Seattle> 57 59
+31 n7mm <Jack from Flagstaff> 55 55
+34 va7dgt <Joel from Vancouver> 55 56
+40 k7ppy <Arizona> 55 59
+41 n6sdk <San Diego> 44 55
+0104 kb2h 14.266 <Loe from Albuquerque> 57 56
+08 kb6pr <Was from Southern California> 58 56
+11 ke6v 57 59
+19 kg5vek <Brian from Mississippi> 58 59
+20 k0oi <Scott from Southern California> 59 59
+21 k1cpj <Bob from Connecticut> 58 59
+22 w5lex <Jerry from USS Lexington> 57 57
+1731 ki6ats 14.271 57 57
+32 kc0zvn 55 59
+33 w6ro <RMS Queen Mary> 57 55
+34 w1ro 59 45
+37 kj6ohi <Carl from Central California> 58 59
+39 no7az 58 53
+42 w5ajo/7 55 52
+43 kb7dxn 58 59
+47 n6fba <John> 57 58
+49 kb7mkc <Gene> 59 59
+50 ki6pxv <Rod from Yucca Valley> 57 57
+53 n6rnd <Nicholas> 44 57
+58 w9evt 14.268 <Washington Island, WI> 55 58
+1800 n6qs <Dave from Yucca Valley> 59 55
+02 ns7dd <Dave from USS Turner Joy> 57 57
+04 va7cdq <Chuck from West Coast of BC> 57 59
+05 ab6qm <Mel from San Francisco> 58 59
+08 w5qz 14.274 <Dave from Texas> 57 57
+10 k6aa <John from ST-695 Angels Gate> 57 57
+13 ag7ko <Washington>  53 55
+16 km6dnd <San Diego> 54 57
+18 wa7g <Dan from California> 57 55
+21 k7wda 55 56
+22 ve7fsr < British Columbia> 57 57
+23 ke7a <Dick from N. Texas> 57 52
+24 kj7coa <Steve> 58 59
+27 k6kwi <California> 55 57
+29 k6wfv <Bob from San Luis Obisbo> 57 57
+30 kj7mx 57 56
+31 ae5yn <Rob from Arkansas> 55 55
+33 w7tna <Paul from Fountain Hills, AZ> 55 55
+34 kg9nd <Darryl from Indiana> 59 59
+35 k4nyw <North Carolina> 33 44
+38 n6aeb <Mark> 57 56
+53 nc3c 14.265 <Seattle QRP> 33 59
+1938 n6hc 14.270 <Arnie from Southern California> 57 59
+40 n6rnd <Nicholas (double)> 57 59
+42 w7rpe <Paul from Washington> 58 59
+46 kb7jaq <Scott from Tuscon> 55 56
+52 kf7ezj <Andrew from Tuscon> 55 56
+date 2019-06-02
+0455 w5abq <Jeff from Albuquerque> 55 57
+operator kd7usn
+0513 k6xn 40m 7.260 <Ted> 59 59
+16 k6yn <Bob from Northern California> 59 59
+16 k6on <Bob> 59 59
+18 nn7nn <Bob> 59 59
+19 nc6dx <Bob> 59 59
+21 w6doj 59 59
+23 kx6y <Dave from Southern Nevada> 59 57
+operator k0pon
+28 k7jpt <Jeff from Yuma> 59 55
+35 kj7jsc <Arizona> 55 55
+37 ke6foa <California> 55 55
+41 wy7djr <Doug from Cheyenne> 57 55
+46 ad6go/7 <Steve from Lake Havasu> 55 55
+operator kd7usn
+52 ke6foa <Carl from Californa (double)> 57 55
+operator k0pon
+1654 kb5jhy 20m 14.265 <Tom from Lafeyette, LA> 57 54
+57 kc7kny 55 55
+58 nc0jw <Jim from Colorado Springs> 57 57
+1701 w5ods 14.264 43 58
+06 kk1j <Tuscon> 55 59
+08 n6dwy <Bakersfield> 57 51
+operator kd7usn
+14 w7awh 57 57
+17 wb5q <North New Mexico> 57 57
+operator k0pon
+24 ks5kip <New Mexico> 53 59
+25 n6whv <Dick from Denver> 57 59
+26 n7eee <Randy from South Dakota> 57 59
+28 nl7ll <Gary from Ketchikan, Alaska> 58 58
+29 ac1eg <Colorado> 58 59
+32 kd0sqc <Tony from Franktown, Colorado> 56 56
+48 kk6jol 14.271 57 59
+54 k6yp 14.266 <John from San Francisco> 58 59
+55 ve7byi <Albert from Surrey, BC> 58 59
+59 kd9cb <Phil from Foosland, IL> 58 59
+1800 wa9cwe <Steve, IN> 44 59
+01 k6jat <Tim from San Francisco> 58 57
+02 k0lmd <Ron from Colorado> 55 53
+03 k7aez <Doug from Mesa, Arizona> 58 59
+06 kz7n <Ian from Arizona> 55 59
+07 nj6vt <Dan from USS Pampanito> 57 57
+11 kb6bkn <Walter from Novato, California> 55 58
+operator kd7usn
+19 k8ij <Northern California> 59 59
+22 wb6qaz <North San Francisco> 59 59
+25 n6rnd <Nicholas (double)> 54 55
+28 n6oku 57 56
+operator k0pon
+32 ac6bf <Dan from Mojave Desert> 57 56
+33 wb5dya <Austin, TX> 54 58
+35 wb6kwl <Steve from San Francisco> 49 58
+36 wb2mzi <Don from Arizona> 55 55
+39 kg6bkg <Northern California> 55 55
+42 wb5dw <Andrew from Texas> 43 55
+46 kb8zgl <Mike from Michigan> 57 33
+operator kd7usn
+53 n3rzu 43 55
+operator k0pon
+1900 n1s 14.267 <Harry from USS Nautilus> 56 57
+06 w2yh 14.265 <Carl from Franklin, New Jersey> 53 54
+10 n6erd <San Diego, CA> 57 54
+11 w5dmc <Drew from Colorado> 58 57
+14 n3rzu 57 59
+15 w7amc <Las Vegas> 55 55
+20 wa0aux 33 57
+22 kn6iq 56 55
+26 ag6wg <San Diego, CA> 33 59
+27 nm8gs <Stan from Lightship Huron> 58 57
+34 ne0db <Colorado> 55 56
+47 wa7ugs 14.266 <Mario from Arizona>
+52 w8dox <Boise> 57 59
+54 n4vpm <Howard from Grand Junction> 57 59
+2002 k4cpm 55 55
+03 ke0twb <Colorado Springs> 56 56
+05 n1lq <Middleton, MA> 45 53
+11 ab6wl <Earl from Newport Beach, CA> 58 55
+12 wc6k <Huntington Beach, CA> 57 55
+13 w9met <Jerry from North Texas> 57 55
+14 w6prk <Park from Southern California> 57 55
+15 n4dla <Matthew from California> 57 55
+18 k9vit <Utah> 55 57
+20 kc0akt <Andrew from Iowa> 57 57

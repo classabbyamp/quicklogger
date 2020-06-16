@@ -1,0 +1,16 @@
+# Header 
+mycall k0pon
+operator 
+nickname k3385 20may2019
+# Log 
+date 2019-05-20
+40m 7.260 ssb 2007 w7rgm 59 57
+2009 n7khh 59 59
+2040 ve7bku 57 33
+2046 kj7fbw 59 33
+20m 14.270 ssb 2109 k6ldq 33 32
+40m 7.260 ssb  2131 n6duk 57 55
+2m 146.410 fm 2148 k7mgo 59 59
+40m 7.260 ssb 2202 kd6gn 56 59
+2227 k7cow 59 57
+2232 ki7yth 57 59

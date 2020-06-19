@@ -1,7 +1,5 @@
-
-#!/usr/bin/env python3
 """
-parser.py - part of quicklogger
+parser.py - part of fastlogger
 ---
 
 Copyright (C) 2020 classabbyamp
@@ -12,6 +10,9 @@ from typing import List, Sequence, Dict, AnyStr, Union
 import collections.abc as abc
 from datetime import datetime, timedelta, MINYEAR
 import re
+
+
+__all__ = ["LogFile"]
 
 
 class LogFile(abc.Sequence):
@@ -249,22 +250,22 @@ class LogFile(abc.Sequence):
 
                 if call:
                     row = {
-                        "date_time": curr_datetime,
-                        "band": curr_band,
-                        "freq": curr_freq,
-                        "mode": curr_mode,
-                        "call": call,
+                        "date_time": curr_datetime if curr_datetime else datetime(),
+                        "band": curr_band if curr_band else "",
+                        "freq": curr_freq if curr_freq else "",
+                        "mode": curr_mode if curr_mode else "",
+                        "call": call if call else "",
                         "sent_rst": sent_rst if sent_rst else default_rst,
                         "rcvd_rst": rcvd_rst if rcvd_rst else default_rst,
-                        "notes": notes,
-                        "name": name,
-                        "grid": grid,
-                        "qsl_msg": qsl_msg,
-                        "sent_exch": sent_exch,
-                        "rcvd_exch": rcvd_exch,
-                        "wwff": wwff,
-                        "sota": sota,
-                        "pota": pota,
+                        "notes": notes if notes else "",
+                        "name": name if name else "",
+                        "grid": grid if grid else "",
+                        "qsl_msg": qsl_msg if qsl_msg else "",
+                        "sent_exch": sent_exch if sent_exch else "",
+                        "rcvd_exch": rcvd_exch if rcvd_exch else "",
+                        "wwff": wwff if wwff else "",
+                        "sota": sota if sota else "",
+                        "pota": pota if pota else "",
                     }
                     rows.append(LogRow(row))
         

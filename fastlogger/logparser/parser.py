@@ -8,7 +8,7 @@ This software is released under the BSD 3-Clause license.
 
 from typing import List, Sequence, Dict, AnyStr, Union
 import collections.abc as abc
-from datetime import datetime, timedelta, MINYEAR
+from datetime import datetime, timedelta, MINYEAR, date, time
 import re
 
 
@@ -250,22 +250,23 @@ class LogFile(abc.Sequence):
 
                 if call:
                     row = {
-                        "date_time": curr_datetime if curr_datetime else datetime(),
+                        "date": curr_datetime.date() if curr_datetime else date(),
+                        "time": curr_datetime.time() if curr_datetime else time(),
                         "band": curr_band if curr_band else "",
                         "freq": curr_freq if curr_freq else "",
                         "mode": curr_mode if curr_mode else "",
                         "call": call if call else "",
                         "sent_rst": sent_rst if sent_rst else default_rst,
                         "rcvd_rst": rcvd_rst if rcvd_rst else default_rst,
-                        "notes": notes if notes else "",
                         "name": name if name else "",
                         "grid": grid if grid else "",
-                        "qsl_msg": qsl_msg if qsl_msg else "",
                         "sent_exch": sent_exch if sent_exch else "",
                         "rcvd_exch": rcvd_exch if rcvd_exch else "",
                         "wwff": wwff if wwff else "",
                         "sota": sota if sota else "",
                         "pota": pota if pota else "",
+                        "qsl_msg": qsl_msg if qsl_msg else "",
+                        "notes": notes if notes else "",
                     }
                     rows.append(LogRow(row))
         
@@ -288,29 +289,31 @@ class LogRow(abc.Mapping):
     def __init__(self, data):
         self._data = data
         # required
-        self.date_time: datetime = data["date_time"]
+        self.date: date = data["date"]
+        self.time: time = data["time"]
         self.band: str = data["band"]
         self.freq: float = data["freq"]
         self.mode: str = data["mode"]
         self.call: str = data["call"]
         # RST
-        self.sent_rst: str = data.get("sent_rst", None)
-        self.rcvd_rst: str = data.get("rcvd_rst", None)
+        self.sent_rst: str = data.get("sent_rst", "")
+        self.rcvd_rst: str = data.get("rcvd_rst", "")
         # optional
-        self.notes: str = data.get("notes", None)
-        self.name: str = data.get("name", None)
-        self.grid: str = data.get("grid", None)
-        self.qsl_msg: str = data.get("qsl_msg", None)
+        self.name: str = data.get("name", "")
+        self.grid: str = data.get("grid", "")
         # contest
-        self.sent_exch: str = data.get("sent_exch", None)
-        self.rcvd_exch: str = data.get("rcvd_exch", None)
+        self.sent_exch: str = data.get("sent_exch", "")
+        self.rcvd_exch: str = data.get("rcvd_exch", "")
         # WWFF
-        self.wwff: str = data.get("wwff", None)
+        self.wwff: str = data.get("wwff", "")
         # SOTA
-        self.sota: str = data.get("sota", None)
+        self.sota: str = data.get("sota", "")
         # POTA
-        self.pota: str = data.get("pota", None)
-    
+        self.pota: str = data.get("pota", "")
+        # Other/Optional
+        self.qsl_msg: str = data.get("qsl_msg", "")
+        self.notes: str = data.get("notes", "")
+
     def __str__(self):
         return str(self._data)
 

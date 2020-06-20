@@ -31,7 +31,7 @@ class LogFile(abc.Sequence):
 
     def _parse(self, data: List[str]):
         rows = list()
-        curr_datetime = datetime(MINYEAR, 1, 1)
+        curr_datetime = datetime.min
         curr_band = None
         curr_freq = None
         curr_mode = None
@@ -174,11 +174,16 @@ class LogFile(abc.Sequence):
                 # time
                 if m := re.search(r"(?:\s|^)(\d{1,4})\b", ln, re.I):
                     if len(t := m.group(1)) <= 2:
-                        curr_datetime += timedelta(seconds=int(t)*60)
+                        t_diff = int(t) - curr_datetime.minute
+                        curr_datetime += timedelta(seconds=t_diff*60)
                     elif len(t) == 3:
-                        curr_datetime += timedelta(seconds=int(t[0:1])*3600 + int(t[1:])*60)
+                        t_diff_m = int(t[1:]) - curr_datetime.minute
+                        t_diff_h = int(t[0:1]) - curr_datetime.hour
+                        curr_datetime += timedelta(seconds=t_diff_h*3600 + t_diff_m*60)
                     else:
-                        curr_datetime += timedelta(seconds=int(t[0:2])*3600 + int(t[2:])*60)
+                        t_diff_m = int(t[2:]) - curr_datetime.minute
+                        t_diff_h = int(t[0:2]) - curr_datetime.hour
+                        curr_datetime += timedelta(seconds=t_diff_h*3600 + t_diff_m*60)
                     ln = ln.replace(m.group(1), "", 1)
 
                 # mode
@@ -250,8 +255,8 @@ class LogFile(abc.Sequence):
 
                 if call:
                     row = {
-                        "date": curr_datetime.date() if curr_datetime else date(),
-                        "time": curr_datetime.time() if curr_datetime else time(),
+                        "date": curr_datetime.date() if curr_datetime else date.min,
+                        "time": curr_datetime.time() if curr_datetime else time.min,
                         "band": curr_band if curr_band else "",
                         "freq": curr_freq if curr_freq else "",
                         "mode": curr_mode if curr_mode else "",
@@ -269,7 +274,7 @@ class LogFile(abc.Sequence):
                         "notes": notes if notes else "",
                     }
                     rows.append(LogRow(row))
-        
+
         self.operators = tuple(set(self.operators))
 
         return tuple(rows)
@@ -331,7 +336,7 @@ class LogRow(abc.Mapping):
 class QLParsingError(Exception):
     def __init__(self, msg, line_num, line):
         self.msg = msg
-        self.line_num = line_num + 1 # make it human-readable
+        self.line_num = line_num + 1    # make it human-readable
         self.line = line
 
 

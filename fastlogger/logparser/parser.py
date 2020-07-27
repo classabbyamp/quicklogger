@@ -6,9 +6,9 @@ Copyright (C) 2020 classabbyamp
 This software is released under the BSD 3-Clause license.
 """
 
-from typing import List, Sequence, Dict, AnyStr, Union
+from typing import List, Sequence, Union
 import collections.abc as abc
-from datetime import datetime, timedelta, MINYEAR, date, time
+from datetime import datetime, timedelta, date, time
 import re
 
 
@@ -249,7 +249,10 @@ class LogFile(abc.Sequence):
 
                 if not sent_exch and len(rows) and (p_sent_exch := rows[-1].sent_exch):
                     if self._auto_exch:
-                        sent_exch = str(int(p_sent_exch) + 1)
+                        try:
+                            sent_exch = str(int(p_sent_exch) + 1)
+                        except ValueError:
+                            sent_exch = p_sent_exch
                     else:
                         sent_exch = p_sent_exch
 

@@ -158,7 +158,7 @@ class LogFile(abc.Sequence):
                         else:
                             y = int(y)
                     if len(mo := m.group(2)) == 1:
-                        mo = int("0" + m)
+                        mo = int("0" + mo)
                     else:
                         mo = int(mo)
                     if len(d := m.group(3)) == 1:

@@ -15,6 +15,7 @@ $ source env/bin/activate
 $ pip install -Ur requirements.txt
 # run
 $ python3 fastlogger
+```
 
 ## Icons
 

@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
 """
-quicklogger
+logparser test interface
 ---
 
 Copyright (C) 2020 classabbyamp

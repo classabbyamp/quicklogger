@@ -1,17 +1,18 @@
-
-#!/usr/bin/env python3
 """
-parser.py - part of quicklogger
+parser.py - part of fastlogger
 ---
 
 Copyright (C) 2020 classabbyamp
 This software is released under the BSD 3-Clause license.
 """
 
-from typing import List, Sequence, Dict, AnyStr, Union
+from typing import List, Sequence, Union
 import collections.abc as abc
-from datetime import datetime, timedelta, MINYEAR
+from datetime import datetime, timedelta, date, time
 import re
+
+
+__all__ = ["LogFile"]
 
 
 class LogFile(abc.Sequence):
@@ -30,7 +31,7 @@ class LogFile(abc.Sequence):
 
     def _parse(self, data: List[str]):
         rows = list()
-        curr_datetime = datetime(MINYEAR, 1, 1)
+        curr_datetime = datetime.min
         curr_band = None
         curr_freq = None
         curr_mode = None
@@ -157,7 +158,7 @@ class LogFile(abc.Sequence):
                         else:
                             y = int(y)
                     if len(mo := m.group(2)) == 1:
-                        mo = int("0" + m)
+                        mo = int("0" + mo)
                     else:
                         mo = int(mo)
                     if len(d := m.group(3)) == 1:
@@ -173,11 +174,16 @@ class LogFile(abc.Sequence):
                 # time
                 if m := re.search(r"(?:\s|^)(\d{1,4})\b", ln, re.I):
                     if len(t := m.group(1)) <= 2:
-                        curr_datetime += timedelta(seconds=int(t)*60)
+                        t_diff = int(t) - curr_datetime.minute
+                        curr_datetime += timedelta(seconds=t_diff*60)
                     elif len(t) == 3:
-                        curr_datetime += timedelta(seconds=int(t[0:1])*3600 + int(t[1:])*60)
+                        t_diff_m = int(t[1:]) - curr_datetime.minute
+                        t_diff_h = int(t[0:1]) - curr_datetime.hour
+                        curr_datetime += timedelta(seconds=t_diff_h*3600 + t_diff_m*60)
                     else:
-                        curr_datetime += timedelta(seconds=int(t[0:2])*3600 + int(t[2:])*60)
+                        t_diff_m = int(t[2:]) - curr_datetime.minute
+                        t_diff_h = int(t[0:2]) - curr_datetime.hour
+                        curr_datetime += timedelta(seconds=t_diff_h*3600 + t_diff_m*60)
                     ln = ln.replace(m.group(1), "", 1)
 
                 # mode
@@ -243,31 +249,35 @@ class LogFile(abc.Sequence):
 
                 if not sent_exch and len(rows) and (p_sent_exch := rows[-1].sent_exch):
                     if self._auto_exch:
-                        sent_exch = str(int(p_sent_exch) + 1)
+                        try:
+                            sent_exch = str(int(p_sent_exch) + 1)
+                        except ValueError:
+                            sent_exch = p_sent_exch
                     else:
                         sent_exch = p_sent_exch
 
                 if call:
                     row = {
-                        "date_time": curr_datetime,
-                        "band": curr_band,
-                        "freq": curr_freq,
-                        "mode": curr_mode,
-                        "call": call,
+                        "date": curr_datetime.date() if curr_datetime else date.min,
+                        "time": curr_datetime.time() if curr_datetime else time.min,
+                        "band": curr_band if curr_band else "",
+                        "freq": curr_freq if curr_freq else "",
+                        "mode": curr_mode if curr_mode else "",
+                        "call": call if call else "",
                         "sent_rst": sent_rst if sent_rst else default_rst,
                         "rcvd_rst": rcvd_rst if rcvd_rst else default_rst,
-                        "notes": notes,
-                        "name": name,
-                        "grid": grid,
-                        "qsl_msg": qsl_msg,
-                        "sent_exch": sent_exch,
-                        "rcvd_exch": rcvd_exch,
-                        "wwff": wwff,
-                        "sota": sota,
-                        "pota": pota,
+                        "name": name if name else "",
+                        "grid": grid if grid else "",
+                        "sent_exch": sent_exch if sent_exch else "",
+                        "rcvd_exch": rcvd_exch if rcvd_exch else "",
+                        "wwff": wwff if wwff else "",
+                        "sota": sota if sota else "",
+                        "pota": pota if pota else "",
+                        "qsl_msg": qsl_msg if qsl_msg else "",
+                        "notes": notes if notes else "",
                     }
                     rows.append(LogRow(row))
-        
+
         self.operators = tuple(set(self.operators))
 
         return tuple(rows)
@@ -287,29 +297,31 @@ class LogRow(abc.Mapping):
     def __init__(self, data):
         self._data = data
         # required
-        self.date_time: datetime = data["date_time"]
+        self.date: date = data["date"]
+        self.time: time = data["time"]
         self.band: str = data["band"]
         self.freq: float = data["freq"]
         self.mode: str = data["mode"]
         self.call: str = data["call"]
         # RST
-        self.sent_rst: str = data.get("sent_rst", None)
-        self.rcvd_rst: str = data.get("rcvd_rst", None)
+        self.sent_rst: str = data.get("sent_rst", "")
+        self.rcvd_rst: str = data.get("rcvd_rst", "")
         # optional
-        self.notes: str = data.get("notes", None)
-        self.name: str = data.get("name", None)
-        self.grid: str = data.get("grid", None)
-        self.qsl_msg: str = data.get("qsl_msg", None)
+        self.name: str = data.get("name", "")
+        self.grid: str = data.get("grid", "")
         # contest
-        self.sent_exch: str = data.get("sent_exch", None)
-        self.rcvd_exch: str = data.get("rcvd_exch", None)
+        self.sent_exch: str = data.get("sent_exch", "")
+        self.rcvd_exch: str = data.get("rcvd_exch", "")
         # WWFF
-        self.wwff: str = data.get("wwff", None)
+        self.wwff: str = data.get("wwff", "")
         # SOTA
-        self.sota: str = data.get("sota", None)
+        self.sota: str = data.get("sota", "")
         # POTA
-        self.pota: str = data.get("pota", None)
-    
+        self.pota: str = data.get("pota", "")
+        # Other/Optional
+        self.qsl_msg: str = data.get("qsl_msg", "")
+        self.notes: str = data.get("notes", "")
+
     def __str__(self):
         return str(self._data)
 
@@ -327,7 +339,7 @@ class LogRow(abc.Mapping):
 class QLParsingError(Exception):
     def __init__(self, msg, line_num, line):
         self.msg = msg
-        self.line_num = line_num + 1 # make it human-readable
+        self.line_num = line_num + 1    # make it human-readable
         self.line = line
 
 
